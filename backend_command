@@ -1,0 +1,1 @@
+docker compose -f .\backend\config\docker\docker-compose.yml --env-file .env up --build
