@@ -15,9 +15,9 @@ up:
 	$(MAKE) up-frontend
 
 down-backend:
-	docker-compose -f ./backend/docker-compose.yml down
+	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env down
 down-frontend:
-	docker-compose -f ./frontend/docker-compose.yml down
+	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env down
 down:
 	$(MAKE) down-backend
 	$(MAKE) down-frontend
