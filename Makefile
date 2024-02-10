@@ -30,6 +30,6 @@ run:
 	$(MAKE) up
 
 load-backend-fixtures:
-    docker
+	docker
 
 .PHONY: build-backend build-frontend build up-backend up-frontend up down-backend down-frontend down logs run
