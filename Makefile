@@ -22,8 +22,10 @@ down:
 	$(MAKE) down-backend
 	$(MAKE) down-frontend
 
-logs:
-	docker-compose logs
+logs-backend:
+	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env logs
+logs-frontend:
+	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env logs
 
 run:
 	$(MAKE) build
