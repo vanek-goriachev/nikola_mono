@@ -2,6 +2,10 @@ build-backend:
 	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env build
 build-frontend:
 	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env build
+build-redis:
+	docker-compose -f ./redis.yml --env-file ./\.env build
+build-postgres:
+	docker-compose -f ./postgres.yml --env-file ./\.env build
 build:
 	$(MAKE) build-backend
 	$(MAKE) build-frontend
@@ -10,6 +14,10 @@ up-backend:
 	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env up -d
 up-frontend:
 	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env up -d
+up-redis:
+	docker-compose -f ./redis.yml --env-file ./\.env up -d
+up-postgres:
+	docker-compose -f ./postgres.yml --env-file ./\.env up -d
 up:
 	$(MAKE) up-backend
 	$(MAKE) up-frontend
@@ -18,6 +26,10 @@ down-backend:
 	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env down
 down-frontend:
 	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env down
+down-redis:
+	docker-compose -f ./redis.yml --env-file ./\.env down
+down-postgres:
+	docker-compose -f ./postgres.yml --env-file ./\.env down
 down:
 	$(MAKE) down-backend
 	$(MAKE) down-frontend
@@ -34,4 +46,26 @@ run:
 load-backend-fixtures:
 	docker
 
-.PHONY: build-backend build-frontend build up-backend up-frontend up down-backend down-frontend down logs-backend logs-frontend run
+.PHONY:
+	build-backend
+	build-frontend
+	build-redis
+	build-postgres
+	build
+
+	up-backend
+	up-frontend
+	up-redis
+	up-postgres
+	up
+
+	down-backend
+	down-frontend
+	down-redis
+	down-postgres
+	down
+
+	logs-backend
+	logs-frontend
+
+	run
