@@ -34,4 +34,4 @@ run:
 load-backend-fixtures:
 	docker
 
-.PHONY: build-backend build-frontend build up-backend up-frontend up down-backend down-frontend down logs run
+.PHONY: build-backend build-frontend build up-backend up-frontend up down-backend down-frontend down logs-backend logs-frontend run
