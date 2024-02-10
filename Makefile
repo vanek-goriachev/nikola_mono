@@ -44,11 +44,11 @@ run:
 	$(MAKE) up
 
 run-everything:
-    $(MAKE) build-postgres
-    $(MAKE) build-redis
-    $(MAKE) up-postgres
-    $(MAKE) up-redis
-    $(MAKE) run
+	$(MAKE) build-postgres
+	$(MAKE) build-redis
+	$(MAKE) up-postgres
+	$(MAKE) up-redis
+	$(MAKE) run
 
 load-backend-fixtures:
 	docker
