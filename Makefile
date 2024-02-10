@@ -43,6 +43,13 @@ run:
 	$(MAKE) build
 	$(MAKE) up
 
+run-everything:
+    $(MAKE) build-postgres
+    $(MAKE) build-redis
+    $(MAKE) up-postgres
+    $(MAKE) up-redis
+    $(MAKE) run
+
 load-backend-fixtures:
 	docker
 
@@ -69,3 +76,4 @@ load-backend-fixtures:
 	logs-frontend
 
 	run
+	run-everything
