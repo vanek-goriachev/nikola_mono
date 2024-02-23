@@ -50,9 +50,6 @@ run-everything:
 	$(MAKE) up-redis
 	$(MAKE) run
 
-load-backend-fixtures:
-	docker
-
 .PHONY:
 	build-backend
 	build-frontend
