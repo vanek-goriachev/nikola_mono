@@ -28,4 +28,10 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 sudo certbot certonly --nginx
 
 TO BE CONTINUED
+-- переложить готовый конфиг nginx куда надо
+-- перезапустит nginx 
+-- поднять все что нужно
 
+... починить gunicorn
+... починить проход в админку
+... починить общение бэка и фронта
