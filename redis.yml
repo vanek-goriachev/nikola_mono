@@ -6,3 +6,10 @@ services:
     restart: unless-stopped
     ports:
       - '${REDIS_PORT}:6379'
+    networks:
+      - nikola-docker-network
+
+networks:
+  nikola-docker-network:
+    external: true
+

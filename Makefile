@@ -1,3 +1,6 @@
+create-network:
+	docker network create -d bridge nikola-docker-network
+
 build-backend:
 	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env build
 build-frontend:
