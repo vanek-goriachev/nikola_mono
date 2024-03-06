@@ -44,9 +44,9 @@ run:
 	$(MAKE) up
 
 run-everything:
-	$(MAKE) build-postgres
+#	$(MAKE) build-postgres
 	$(MAKE) build-redis
-	$(MAKE) up-postgres
+#	$(MAKE) up-postgres
 	$(MAKE) up-redis
 	$(MAKE) run
 

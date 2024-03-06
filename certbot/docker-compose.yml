@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - .:/app
+      - ./data/letsencrypt:/etc/letsencrypt
+      - ./data/lib:/var/lib/letsencrypt
+      - ./data/www:/var/www/html
+    entrypoint: sh -c 'chmod +x /app/entrypoint.sh; sh /app/entrypoint.sh'
+
