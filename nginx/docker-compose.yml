@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  nginx:
+    env_file:
+      - ../.env
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - nikola-docker-network
+    volumes:
+      - ../certbot/data:/certbot_files
+      - ../backend:/backend_files
+      - ../frontend:/frontend_files
+
+networks:
+  nikola-docker-network:
+    external: true

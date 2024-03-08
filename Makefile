@@ -1,3 +1,9 @@
+create-network:
+	docker network create nikola-docker-network
+
+
+build-nginx:
+	docker-compose -f ./nginx/docker-compose.yml --env-file ./\.env build
 build-backend:
 	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env build
 build-frontend:
@@ -7,9 +13,12 @@ build-redis:
 build-postgres:
 	docker-compose -f ./postgres.yml --env-file ./\.env build
 build:
+	$(MAKE) build-nginx
 	$(MAKE) build-backend
 	$(MAKE) build-frontend
 
+up-nginx:
+	docker-compose -f ./nginx/docker-compose.yml --env-file ./\.env up -d
 up-backend:
 	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env up -d
 up-frontend:
@@ -19,9 +28,12 @@ up-redis:
 up-postgres:
 	docker-compose -f ./postgres.yml --env-file ./\.env up -d
 up:
+	$(MAKE) up-nginx
 	$(MAKE) up-backend
 	$(MAKE) up-frontend
 
+down-nginx:
+	docker-compose -f ./nginx/docker-compose.yml --env-file ./\.env down
 down-backend:
 	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env down
 down-frontend:
@@ -31,17 +43,22 @@ down-redis:
 down-postgres:
 	docker-compose -f ./postgres.yml --env-file ./\.env down
 down:
+	$(MAKE) down-nginx
 	$(MAKE) down-backend
 	$(MAKE) down-frontend
 
+logs-nginx:
+	docker-compose -f ./nginx/docker-compose.yml --env-file ./\.env logs
 logs-backend:
 	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env logs
 logs-frontend:
 	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env logs
 
 run:
-	$(MAKE) build
-	$(MAKE) up
+	$(MAKE) build-backend
+	$(MAKE) up-backend
+	$(MAKE) build-frontend
+	$(MAKE) up-frontend
 
 run-everything:
 #	$(MAKE) build-postgres
