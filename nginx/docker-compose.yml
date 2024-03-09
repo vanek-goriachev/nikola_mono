@@ -15,7 +15,6 @@ services:
     volumes:
       - ../certbot/data:/certbot_files
       - ../backend:/backend_files
-      - ../frontend:/frontend_files
 
 networks:
   nikola-docker-network:
