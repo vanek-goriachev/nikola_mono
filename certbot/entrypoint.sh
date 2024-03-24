@@ -1,6 +1,6 @@
 #!/bin/bash
 
-certbot certonly --webroot --webroot-path=/var/www/html -d avokado.site --email you@ele.com --agree-tos --no-eff-email
+certbot certonly --webroot --webroot-path=/var/www/html -d floppa.space --email you@ele.com --agree-tos --no-eff-email
 
 #sudo chmod -R a+r /etc/letsencrypt
 #sudo chmod -R a+r /var/lib/letsencrypt
