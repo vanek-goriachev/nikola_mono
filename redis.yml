@@ -2,13 +2,8 @@ version: '2'
 
 services:
   redis:
+    container_name: redis
     image: library/redis
     restart: unless-stopped
     ports:
       - '${REDIS_PORT}:6379'
-    networks:
-      - nikola-docker-network
-
-networks:
-  nikola-docker-network:
-    external: true

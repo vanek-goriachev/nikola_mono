@@ -1,7 +1,8 @@
 version: '2'
 
 services:
-  db:
+  postgres:
+    container_name: postgres
     image: postgres
     env_file: .env
     ports:
