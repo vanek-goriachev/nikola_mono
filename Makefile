@@ -6,7 +6,7 @@ run-postgres:
 
 # Backend container commands
 build-backend:
-	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env build
+	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env build --no-cache
 up-backend:
 	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env up -d
 run-backend:
@@ -27,7 +27,7 @@ baskend-bash:
 
 # Frontend container commands
 build-frontend:
-	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env build
+	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env build --no-cache
 up-frontend:
 	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env up -d
 run-frontend:
