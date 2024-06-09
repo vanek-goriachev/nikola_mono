@@ -6,7 +6,7 @@ run-postgres:
 
 # Backend container commands
 build-backend:
-	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env build --no-cache
+	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env build
 up-backend:
 	docker-compose -f ./backend/docker-compose.yml --env-file ./\.env up -d
 run-backend:
@@ -22,12 +22,16 @@ backend-create-superuser:
 	docker exec -it backend python manage.py createsuperuser
 backend-fill-db:
 	docker exec -it backend python manage.py loaddata fixtures.json
-baskend-bash:
+backend-bash:
 	docker exec -it backend bash
 
 # Frontend container commands
+rm-cache-frontend:
+	docker stop frontend
+	docker rm frontend
+	docker volume rm frontend_app_node_modules frontend_app_next
 build-frontend:
-	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env build --no-cache
+	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env build
 up-frontend:
 	docker-compose -f ./frontend/docker-compose.yml --env-file ./\.env up -d
 run-frontend:
