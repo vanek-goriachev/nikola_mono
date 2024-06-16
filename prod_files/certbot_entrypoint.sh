@@ -11,7 +11,7 @@ DH_PARAMS_FILE="/etc/letsencrypt/ssl-dhparams.pem"
 # Проверяем, существует ли файл
 if [ ! -f "$DH_PARAMS_FILE" ]; then
   echo "$(date) Файл $DH_PARAMS_FILE не найден. Генерируем новый..."
-  echo "$(timestamp) Это может занять около 5 минут когда запускается внутри контейнера"
+  echo "$(date) Это может занять около 5 минут когда запускается внутри контейнера"
   openssl dhparam -out "$DH_PARAMS_FILE" 4096 > /dev/null 2>&1
   echo "$(date) Файл $DH_PARAMS_FILE успешно сгенерирован."
 else

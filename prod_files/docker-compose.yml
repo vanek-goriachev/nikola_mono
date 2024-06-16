@@ -11,6 +11,10 @@ services:
       - '${REDIS_PORT}:6379'
     networks:
       - nikola-docker-network
+    volumes:
+      - type: volume
+        source: redis_data
+        target: /data
 
   backend:
     profiles:
@@ -122,6 +126,7 @@ services:
     entrypoint: sh -c 'chmod +x /app/certbot_entrypoint.sh; sh /app/certbot_entrypoint.sh'
 
 volumes:
+  redis_data:
   app_next:
   backend_media:
   backend_static:
