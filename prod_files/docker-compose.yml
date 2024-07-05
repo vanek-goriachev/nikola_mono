@@ -19,7 +19,7 @@ services:
   backend:
     profiles:
       - core
-    image: cr.yandex/crpll06klmdrn2f8jpuj/backend:v2
+    image: cr.yandex/crpll06klmdrn2f8jpuj/backend:${BACKEND_IMAGE_TAG}
     container_name: backend
     ports:
       - '${BACKEND_PORT}:8000'
@@ -36,11 +36,57 @@ services:
         target: /app/static
     depends_on:
       - redis
+    entrypoint: ./backend_entrypoint.sh
+
+  celery-workers:
+    profiles:
+      - core
+    image: cr.yandex/crpll06klmdrn2f8jpuj/backend:${BACKEND_IMAGE_TAG}
+    container_name: celery-workers
+    env_file:
+      - ./.env
+    networks:
+      - nikola-docker-network
+    volumes:
+      - type: volume
+        source: backend_media
+        target: /app/media
+      - type: volume
+        source: backend_static
+        target: /app/static
+    depends_on:
+      - redis
+      - backend
+    entrypoint: ./celery_entrypoint.sh
+
+  flower:
+    profiles:
+      - core
+    image: cr.yandex/crpll06klmdrn2f8jpuj/backend:${BACKEND_IMAGE_TAG}
+    container_name: flower
+    ports:
+      - '${FLOWER_PORT}:5555'
+    env_file:
+      - ./.env
+    networks:
+      - nikola-docker-network
+    volumes:
+      - type: volume
+        source: backend_media
+        target: /app/media
+      - type: volume
+        source: backend_static
+        target: /app/static
+    depends_on:
+      - redis
+      - backend
+      - celery-workers
+    entrypoint: ./flower_entrypoint.sh
 
   frontend:
     profiles:
       - core
-    image: cr.yandex/crpll06klmdrn2f8jpuj/frontend:v2
+    image: cr.yandex/crpll06klmdrn2f8jpuj/frontend:${FRONTEND_IMAGE_TAG}
     container_name: frontend
     env_file:
       - ./.env
