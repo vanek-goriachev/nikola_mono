@@ -102,7 +102,7 @@ services:
   nginx:
     profiles:
       - nginx
-    image: nginx
+    image: cr.yandex/crpll06klmdrn2f8jpuj/nginx_with_brotli:${NGINX_WITH_BROTLI_IMAGE_TAG}
     container_name: nginx
     env_file:
       - ./.env
@@ -138,7 +138,7 @@ services:
     profiles:
       - nginx-certbot
       - nginx-temporary
-    image: nginx
+    image: cr.yandex/crpll06klmdrn2f8jpuj/nginx_with_brotli:${NGINX_WITH_BROTLI_IMAGE_TAG}
     container_name: nginx-temporary
     ports:
       - "80:80"
