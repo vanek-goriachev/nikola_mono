@@ -40,3 +40,8 @@ brotli_types application/atom+xml application/javascript application/json applic
           application/x-font-ttf application/x-javascript application/xhtml+xml application/xml\n \
           font/eot font/opentype font/otf font/truetype image/svg+xml image/vnd.microsoft.icon\n \
           image/x-icon image/x-win-bitmap text/css text/javascript text/plain text/xml;' > /etc/nginx/conf.d/brotli.conf
+
+RUN echo 'gzip_static on; \
+gzip on; \
+gzip_comp_level 5; \
+gzip_types image/jpeg image/png;' > /etc/nginx/conf.d/gzip.conf \
