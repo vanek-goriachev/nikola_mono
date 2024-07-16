@@ -24,6 +24,9 @@ logs-backend:
 	docker logs backend
 
 # Backend actions
+backend-migrate-db:
+	docker exec -it backend python manage.py makemigrations
+	docker exec -it backend python manage.py migrate
 backend-create-superuser:
 	docker exec -it backend python manage.py createsuperuser
 backend-fill-db:
@@ -50,3 +53,7 @@ logs-frontend:
 # Frontend actions
 frontend-bash:
 	docker exec -it frontend bash
+
+# Nginx (with brotli) container commands
+build-nginx_with_brotli:
+	docker build -f ./nginx_with_brotli/Dockerfile ./nginx_with_brotli -t nikola/nginx_with_brotli
