@@ -115,9 +115,6 @@ services:
       - type: bind
         source: ./nginx.conf
         target: /etc/nginx/conf.d/nginx.conf
-      - type: bind
-        source: ./options-ssl-nginx.conf
-        target: /etc/nginx/conf.d/options-ssl-nginx.conf
       - type: volume
         source: app_next
         target: /frontend_next
