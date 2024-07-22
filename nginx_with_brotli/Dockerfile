@@ -30,6 +30,7 @@ COPY --from=builder /app/nginx-1.25.5/objs/ngx_http_brotli_filter_module.so /etc
 COPY --from=builder /app/ssl-dhparams.pem /etc/nginx/conf.d/
 # in nginx.conf file you shoul use `include /etc/nginx/conf.d/common_ssl.conf`
 COPY common_ssl.conf /etc/nginx/conf.d/
+COPY proxy_pass.conf /etc/nginx/conf.d/
 
 RUN echo "load_module modules/ngx_http_brotli_filter_module.so;\nload_module modules/ngx_http_brotli_static_module.so;\n$(cat /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf
 RUN echo 'brotli on;\n \
