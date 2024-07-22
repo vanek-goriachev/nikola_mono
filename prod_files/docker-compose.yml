@@ -57,6 +57,7 @@ services:
     depends_on:
       - redis
       - backend
+    restart: unless-stopped
     entrypoint: ./celery_entrypoint.sh
 
   flower:
@@ -118,6 +119,9 @@ services:
       - type: volume
         source: app_next
         target: /frontend_next
+      - type: bind
+        source: ./SEO
+        target: /SEO
       - type: volume
         source: backend_media
         target: /backend_media

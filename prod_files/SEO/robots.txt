@@ -1,0 +1,9 @@
+# Сгенерировано https://pr-cy.ru/
+
+Sitemap: https://example.com/sitemap.xml
+User-agent: *
+Allow: /
+Allow: /house
+Allow: /service
+Disallow: /backend
+Disallow: /backend/*
