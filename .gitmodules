@@ -4,3 +4,6 @@
 [submodule "backend"]
 	path = backend
 	url = git@github.com:vanek-goriachev/nikola_backend.git
+[submodule "prod_files"]
+	path = prod_files
+	url = git@github.com:vanek-goriachev/nikola_prod_files.git
