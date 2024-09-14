@@ -7,3 +7,4 @@ services:
     restart: unless-stopped
     ports:
       - '${REDIS_PORT}:6379'
+    command: /bin/sh -c "redis-server --requirepass "$REDIS_PASSWORD""
