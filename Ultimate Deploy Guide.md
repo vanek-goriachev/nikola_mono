@@ -92,6 +92,7 @@
     1. Завести аккаунт
     2. Для данного аккаунта открыть Google App Passwords - [https://myaccount.google.com/u/1/apppasswords](https://myaccount.google.com/u/1/apppasswords) и создать там пароль который будет использоваться для email рассылки
     Note: для создания пароля требуется включить двухэтапную аутентификацию
+4. Завести новый счетчик яндекс метрики - скопировать его ID
 
 ### Сервер
 
@@ -206,6 +207,13 @@
         В правом верхнем углу импортировать скачанный на предыдущем шаге дашборд
 3. Тут можно просмотреть успешность выполнения celery тасок (отправка email и уведомления менеджеру)
 [https://nikola-lenivets.site/backend/flower/tasks](https://nikola-lenivets.site/backend/flower/tasks)
+4. Рекомендуется обновить `sitemap.xml` и `robots.txt` на актуальные
+    
+    ```bash
+    cd ~/prod/SEO
+    nano sitemap.xml
+    ```
+    
 
 # Обновление приложения
 
@@ -242,6 +250,17 @@
     sudo docker-compose up nginx -d
     ```
     
+
+# Ссылка-ссылки-ссылки
+
+1. Сайт - [nikola-lenivets.site](http://nikola-lenivets.site) 
+2. Админ панель - [nikola-lenivets.site/backend/admin](http://nikola-lenivets.site/backend/admin) 
+3. Список тасок (на отправку уведомлений) - [nikola-lenivets.site/backend/flower](http://nikola-lenivets.site/backend/flower) 
+4. Прометеус - [nikola-lenivets.site/monitoring/prometheus](http://nikola-lenivets.site/monitoring/prometheus) 
+5. Grafana - [nikola-lenivets.site/monitoring/grafana](http://nikola-lenivets.site/monitoring/grafana) 
+6. Яндекс метрика [https://metrika.yandex.ru/overview?id=98343309](https://metrika.yandex.ru/overview?id=98343309) 
+7. Чат с уведомлениями тг …
+8. Почтовый адрес …
 
 # (may be outdated) Инструкция по локальному запуску проекта
 
