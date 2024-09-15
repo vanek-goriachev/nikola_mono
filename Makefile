@@ -1,4 +1,3 @@
-CONTAINER_REGISTRY_URL="cr.yandex/crpll06klmdrn2f8jpuj"
 
 ENV_FILE := .env
 
